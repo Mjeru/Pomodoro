@@ -1,0 +1,50 @@
+@media all and (min-width: 1024px) {
+  .header {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+}
+
+@media all and (min-width: 1540px) {
+  .header {
+  }
+}
+
+.header {
+  height: 70px;
+  background-color: var(--white);
+  box-shadow: 0 10px 63px rgba(0, 0, 0, 0.07);
+}
+
+.header > .container {
+  height: 100%;
+  max-width: 1240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logoBlock {
+  display: flex;
+  align-items: center;
+  color: var(--red);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 24px;
+}
+.logoBlock img {
+  margin-right: 13px;
+}
+
+.statBlock {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  color: var(--red);
+}
+.statBlock svg {
+  margin-right: 9px;
+}

@@ -1,0 +1,20 @@
+.taskInput {
+  margin-top: 25px;
+  width: 370px;
+  height: 55px;
+  padding: 19px 15px;
+  background-color: var(--greyF4);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: var(--grey33);
+  outline: none;
+  border: none;
+}
+.timeBlock {
+  color: var(--grey99);
+  margin-top: 19px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+}

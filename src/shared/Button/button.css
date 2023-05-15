@@ -1,0 +1,20 @@
+.default {
+  background-color: var(--green);
+  color: var(--white);
+  padding: 19px 50px;
+  font-size: 16px;
+  line-height: 17px;
+  font-weight: 500;
+}
+.default:active {
+  background-color: var(--green3);
+}
+.disabledR {
+  background-color: transparent;
+  color: var(--greyC4);
+  padding: 19px 50px;
+  font-size: 16px;
+  line-height: 17px;
+  font-weight: 500;
+  border: 1px solid var(--greyC4);
+}

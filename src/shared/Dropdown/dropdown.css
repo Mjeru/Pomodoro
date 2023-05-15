@@ -1,0 +1,59 @@
+.container {
+}
+.listContainer {
+  position: relative;
+}
+.list {
+  padding: 5px 0 5px;
+
+  border: 1px solid var(--greyC4);
+  background-color: var(--white);
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  transform: translateX(-50%);
+}
+.list:before {
+  content: "";
+  background-color: var(--white);
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  border-right: 1px solid var(--greyC4);
+  border-top: 1px solid var(--greyC4);
+}
+.list:after {
+  content: "";
+  background-color: var(--white);
+  width: 100px;
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.dropdownOpen > button {
+}
+.list li {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--grey99);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+}
+.list li svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 9px;
+}
+.list li:hover {
+  background-color: var(--greyF4);
+}
+.dropdownList {
+}

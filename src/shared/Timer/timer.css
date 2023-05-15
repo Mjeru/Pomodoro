@@ -1,0 +1,70 @@
+.wrapper {
+  width: 100%;
+  height: 507px;
+  background-color: var(--greyF4);
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 40px;
+  background-color: var(--greyC4);
+  font-size: 16px;
+  line-height: 17px;
+}
+.header div {
+  color: var(--white);
+}
+.title {
+  font-weight: 700;
+}
+.tomato {
+  font-weight: 400;
+}
+.timeWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 380px;
+  margin: 70px auto 0 ;
+  /*margin-top: 70px;*/
+  font-weight: 200;
+  font-size: 150px;
+  line-height: 179px;
+}
+.addButton {
+   position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.buttonsBlock {
+  margin: 32px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px
+}
+.work.start > header {
+  background-color: var(--red);
+}
+.work.start > .timeWrapper {
+  color:  var(--red);
+}
+.work.pause > .timeWrapper {
+}
+.timeout.pause > header {
+  background-color: var(--green);
+}
+.timeout.start > header {
+  background-color: var(--green);
+}
+.timeout.stop > header {
+  background-color: var(--green);
+}
+.timeout.start > .timeWrapper {
+  color:  var(--green);
+}
+.timeout.pause > .timeWrapper {
+}
+.work.pause > header {
+  background-color: var(--red);
+}

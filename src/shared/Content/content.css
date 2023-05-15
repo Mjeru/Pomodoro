@@ -1,0 +1,32 @@
+.content {
+  display: flex;
+}
+.content > div:first-child {
+  flex: 43%;
+}
+.content > div:last-child {
+  flex: 57%;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1240px;
+  padding-top: 100px;
+}
+
+.infoList li:before {
+  content: "\2022";
+  color: var(--red);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.infoList {
+  margin-left: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 33px;
+}
