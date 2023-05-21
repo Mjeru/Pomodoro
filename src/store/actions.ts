@@ -10,7 +10,7 @@ export type AddTaskAction = {
 
 export const addTask: ActionCreator<AddTaskAction> = (title) => ({
   type: ADD_TASK,
-  task: { title, tomato: 1, id: generateRandomString() },
+  task: { title,complete: 0, tomato: 1, id: generateRandomString() },
 });
 
 export const INC_TOMATO = "INC_TOMATO";

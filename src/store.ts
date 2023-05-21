@@ -9,11 +9,13 @@ export const initialState: RootState = {
     {
       title: "Сверстать сайт",
       tomato: 1,
+      complete: 0,
       id: generateRandomString(),
       done: false
     },
     {
       title: "Aдаптив",
+      complete: 0,
       tomato: 1,
       id: generateRandomString(),
       done: false

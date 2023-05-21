@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./tasklist.css";
 import { Button } from "../Button";
 import { Break } from "../Break";
-import { generateId } from "../../util/react/generateRandomIndex";
 import { Task } from "./Task";
 import { store } from "../../store";
 import { addTask } from "../../store/actions";
@@ -12,7 +11,7 @@ import { RootState, TaskType } from "../../store/reducer";
 export function TaskList() {
   const [value, setValue] = useState("");
   const list = useSelector<RootState, Array<TaskType>>((state) => state.tasks);
-  const onChange = (ev: any) => {
+  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setValue(ev.target.value);
   };
   const clickHandler = () => {
@@ -52,6 +51,8 @@ export function TaskList() {
     </div>
   );
 }
+
+
 
 function formatTime(minutes: number) {
   const hours = Math.floor(minutes / 60);

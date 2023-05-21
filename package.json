@@ -5,8 +5,7 @@
   "main": "webpack.config.js",
   "homepage": "https://mjeru.github.io/pomodoro",
   "scripts": {
-    "predeploy": "npm run build:dev",
-    "deploy": "gh-pages -d build:dev",
+    "start": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider CLIENT_ID=ggLLRhNWxtdijvy6bXe65g node ./bin/dev.js",
     "build:dev": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider CLIENT_ID=ggLLRhNWxtdijvy6bXe65g node ./bin/dev.js",
@@ -15,11 +14,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@dnd-kit/sortable": "^7.0.2",
     "@types/ramda": "^0.28.23",
     "@types/react": "^17.0.50",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
+    "firebase": "^9.22.0",
     "nanoid": "^4.0.1",
     "nodemon": "^2.0.12",
     "ramda": "^0.28.0",

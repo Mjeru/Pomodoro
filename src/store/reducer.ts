@@ -8,7 +8,7 @@ import {
   INC_TOMATO,
 } from "./actions";
 
-export type TaskType = { id: string; title: string; tomato: number, done: boolean};
+export type TaskType = { id: string; complete: number, title: string; tomato: number, done: boolean};
 export type RootState = {
   tasks: Array<TaskType>;
 };
@@ -34,9 +34,9 @@ export const rootReducer: (state: any, action: any) => RootState = (
           tasks: state.tasks.map((task: TaskType) => {
             if (task.id === action.id) {
               if (task.tomato === 1){
-                return { ...task, tomato: task.tomato - 1, done: true};
+                return { ...task, tomato: task.tomato - 1, complete: task.complete + 1, done: true};
               }
-              return { ...task, tomato: task.tomato - 1 };
+              return { ...task, tomato: task.tomato - 1, complete: task.complete + 1 };
             }
             return task;
           }),
