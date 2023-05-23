@@ -1,5 +1,6 @@
 import { ActionCreator } from "redux";
 import { generateRandomString } from "../util/react/generateRandomIndex";
+import { TaskType } from './reducer'
 
 export const ADD_TASK = "ADD_TASK";
 
@@ -60,3 +61,15 @@ export const deleteTask: ActionCreator<DeleteTask> = (id) => ({
   type: DELETE_TASK,
   id,
 });
+
+export const SET_TASKS = 'SET_TASKS'
+
+export type SetTasks = {
+  type: typeof SET_TASKS,
+  tasks: Array<TaskType>
+}
+
+export const setTasks : ActionCreator<SetTasks> = (tasks)=>({
+  type: SET_TASKS,
+  tasks
+})

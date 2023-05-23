@@ -5,8 +5,8 @@ import {
   DEC_TOMATO,
   DELETE_TASK,
   EDIT_TASK,
-  INC_TOMATO,
-} from "./actions";
+  INC_TOMATO, SET_TASKS,
+} from './actions'
 
 export type TaskType = { id: string; complete: number, title: string; tomato: number, done: boolean};
 export type RootState = {
@@ -18,6 +18,11 @@ export const rootReducer: (state: any, action: any) => RootState = (
   action
 ) => {
   switch (action.type) {
+    case SET_TASKS: {
+      return {
+        ...state, tasks: action.tasks
+      }
+    }
     case INC_TOMATO:
       return {
         ...state,

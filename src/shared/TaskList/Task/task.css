@@ -12,6 +12,7 @@
 .wrapper:first-child {
 }
 .wrapper {
+  min-width: 370px;
   max-width: 370px;
   margin-top: -1px;
   padding: 15px 0;
@@ -23,13 +24,14 @@
   line-height: 17px;
   border-top: 1px solid var(--greyE4);
   border-bottom: 1px solid var(--greyE4);
+
 }
 .menuButton {
   height: 25px;
 }
 .textWrapper {
   display: flex;
-  align-items: center;
+  align-items: center;   cursor: grab;
 }
 .editInput {
   font-family: "SF UI Display", serif;
