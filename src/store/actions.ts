@@ -1,6 +1,6 @@
 import { ActionCreator } from "redux";
 import { generateRandomString } from "../util/react/generateRandomIndex";
-import { TaskType } from './reducer'
+import { StatType, TaskType } from './reducer'
 
 export const ADD_TASK = "ADD_TASK";
 
@@ -72,4 +72,15 @@ export type SetTasks = {
 export const setTasks : ActionCreator<SetTasks> = (tasks)=>({
   type: SET_TASKS,
   tasks
+})
+
+export const STAT_ADD = 'STAT_ADD'
+export type StatAdd = {
+  type: typeof STAT_ADD,
+  stat: StatType
+}
+
+export const statAdd : ActionCreator<StatAdd> = (stat) => ({
+  stat,
+  type: STAT_ADD
 })

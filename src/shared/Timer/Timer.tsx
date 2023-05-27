@@ -5,17 +5,20 @@ import { RootState, TaskType } from '../../store/reducer'
 import { Icon } from '../Icon'
 import { Button } from '../Button'
 import classNames from 'classnames'
-import { DEC_TOMATO, decTomato } from '../../store/actions'
+import { DEC_TOMATO, decTomato, statAdd } from '../../store/actions'
 import useSound from 'use-sound'
 import boopSfx from '../../assets/beep.mp3'
+import {useWebworker} from '../../hooks/useWorker'
 
-// const WORK = 2
-const WORK = 1500
-// const TIMEOUT = 2
-const TIMEOUT = 300
-let timerContainer: ReturnType<typeof setInterval> | null = null
+
+const WORK = 2
+
+const TIMEOUT = 2
+
 
 export function Timer() {
+    const [value, setValue] = useState(null)
+    const {result, run} = useWebworker()
     const [play] = useSound(boopSfx)
     const dispatch = useDispatch()
     const task = useSelector<RootState, TaskType | undefined>((state) =>
@@ -26,14 +29,16 @@ export function Timer() {
     const [mode, setMode] = useState('stop')
     const addTime = () => {
         setTime((time)=>time+60)
+
     }
+    useEffect(()=>{
+        setTime((time) => time - 1)
+        checkTimer()
+    },[result])
     const startTimer = () => {
         if (mode === 'stop' || mode === 'pause') {
             setMode('start')
-            setTime((time) => time - 1)
-            timerContainer = setInterval(() => {
-                setTime((time) => (time - 1 ? time - 1 : 0))
-            }, 1000)
+            run('start')
         }
     }
     useEffect(()=>{
@@ -41,38 +46,42 @@ export function Timer() {
         setMode('stop')
         setPart('work')
     },[task])
-    useEffect(() => {
-        checkTimer()
-    }, [time])
+
     const checkTimer = () => {
-        if (time < 0) {
+        if (time <= 0) {
             endTimer()
         }
     }
     const stopTimer = () => {
-        if (timerContainer !== null && mode === 'start') {
-            clearInterval(timerContainer)
+        if (mode === 'start') {
+            run('stop')
             setTime(WORK)
             setMode('stop')
         }
     }
     const pauseTimer = () => {
-        if (timerContainer !== null && mode == 'start') {
+        if (mode == 'start') {
             setMode('pause')
-            clearInterval(timerContainer)
+            run('pause')
         }
     }
     const endTimer = () => {
-        console.log(mode)
-        if (timerContainer !== null && part == 'work') {
-            clearInterval(timerContainer)
+        if (part == 'work') {
+            dispatch(statAdd({
+                date: new Date(),
+                pomodoro: 1,
+                pauseTime: 0,
+                workTime: 1500,
+                stops: 1,
+            }))
+            run('stop')
             setTime(TIMEOUT)
             setPart('timeout')
             setMode('stop')
             play()
         }
-        if (timerContainer !== null && part == 'timeout') {
-            clearInterval(timerContainer)
+        if (part == 'timeout') {
+            run('stop')
             setTime(WORK)
             setPart('work')
             setMode('stop')
@@ -86,8 +95,8 @@ export function Timer() {
         }
     }
     const skipWork = () => {
-        if (timerContainer !== null && part == 'work') {
-            clearInterval(timerContainer)
+        if (part == 'work') {
+            run('stop')
             setTime(TIMEOUT)
             setPart('timeout')
             setMode('stop')

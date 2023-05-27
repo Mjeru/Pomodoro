@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -117,7 +117,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(24), exports);
+__exportStar(__webpack_require__(25), exports);
 
 
 /***/ }),
@@ -133,8 +133,8 @@ module.exports = require("react-redux");
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setTasks = exports.SET_TASKS = exports.deleteTask = exports.DELETE_TASK = exports.editTask = exports.EDIT_TASK = exports.decTomato = exports.DEC_TOMATO = exports.incTomato = exports.INC_TOMATO = exports.addTask = exports.ADD_TASK = void 0;
-const generateRandomIndex_1 = __webpack_require__(6);
+exports.statAdd = exports.STAT_ADD = exports.setTasks = exports.SET_TASKS = exports.deleteTask = exports.DELETE_TASK = exports.editTask = exports.EDIT_TASK = exports.decTomato = exports.DEC_TOMATO = exports.incTomato = exports.INC_TOMATO = exports.addTask = exports.ADD_TASK = void 0;
+const generateRandomIndex_1 = __webpack_require__(7);
 exports.ADD_TASK = "ADD_TASK";
 const addTask = (title) => ({
     type: exports.ADD_TASK,
@@ -172,10 +172,22 @@ const setTasks = (tasks) => ({
     tasks
 });
 exports.setTasks = setTasks;
+exports.STAT_ADD = 'STAT_ADD';
+const statAdd = (stat) => ({
+    stat,
+    type: exports.STAT_ADD
+});
+exports.statAdd = statAdd;
 
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -185,26 +197,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.store = exports.initialState = void 0;
-const redux_1 = __webpack_require__(26);
-const redux_devtools_extension_1 = __webpack_require__(27);
-const redux_thunk_1 = __importDefault(__webpack_require__(28));
-const reducer_1 = __webpack_require__(29);
-const generateRandomIndex_1 = __webpack_require__(6);
+const redux_1 = __webpack_require__(27);
+const redux_devtools_extension_1 = __webpack_require__(28);
+const redux_thunk_1 = __importDefault(__webpack_require__(29));
+const reducer_1 = __webpack_require__(30);
+const generateRandomIndex_1 = __webpack_require__(7);
 exports.initialState = {
+    stats: [
+        {
+            date: new Date(),
+            tomato: 0,
+            workTime: 0,
+            pauseTime: 0,
+            stops: 0,
+        },
+    ],
     tasks: [
         {
-            title: "Сверстать сайт",
+            title: 'Сверстать сайт',
             tomato: 1,
             complete: 0,
             id: (0, generateRandomIndex_1.generateRandomString)(),
-            done: false
+            done: false,
         },
         {
-            title: "Aдаптив",
+            title: 'Aдаптив',
             complete: 0,
             tomato: 1,
             id: (0, generateRandomIndex_1.generateRandomString)(),
-            done: false
+            done: false,
         },
     ],
 };
@@ -212,14 +233,14 @@ exports.store = (0, redux_1.createStore)(reducer_1.rootReducer, (0, redux_devtoo
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateId = exports.assignId = exports.generateRandomString = void 0;
-const assoc_1 = __webpack_require__(30);
+const assoc_1 = __webpack_require__(31);
 const generateRandomString = () => Math.random().toString(36).substring(2, 15);
 exports.generateRandomString = generateRandomString;
 exports.assignId = (0, assoc_1.assoc)("id", (0, exports.generateRandomString)());
@@ -228,13 +249,13 @@ exports.generateId = generateId;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("classnames");
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -258,13 +279,13 @@ __exportStar(__webpack_require__(40), exports);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("@dnd-kit/sortable");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -274,12 +295,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = __webpack_require__(0);
-const express_1 = __importDefault(__webpack_require__(11));
-const server_1 = __importDefault(__webpack_require__(12));
-const indexTemplate_1 = __webpack_require__(13);
-const App_1 = __webpack_require__(14);
+const express_1 = __importDefault(__webpack_require__(12));
+const server_1 = __importDefault(__webpack_require__(13));
+const indexTemplate_1 = __webpack_require__(14);
+const App_1 = __webpack_require__(15);
 const app = (0, express_1.default)();
-const server_2 = __webpack_require__(58);
+const server_2 = __webpack_require__(62);
 app.use("/static", express_1.default.static("./dist/client"));
 app.get("/*", (req, res) => {
     let html = server_1.default.renderToString((0, jsx_runtime_1.jsx)(server_2.StaticRouter, Object.assign({ location: req.url }, { children: (0, App_1.App)() })));
@@ -291,19 +312,19 @@ app.listen(3000, () => {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -341,7 +362,7 @@ exports.indexTemplate = indexTemplate;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -350,33 +371,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
 const react_1 = __webpack_require__(1);
-const root_1 = __webpack_require__(15);
-const Layout_1 = __webpack_require__(16);
-__webpack_require__(19);
-const Header_1 = __webpack_require__(21);
+const root_1 = __webpack_require__(16);
+const Layout_1 = __webpack_require__(17);
+__webpack_require__(20);
+const Header_1 = __webpack_require__(22);
 const react_redux_1 = __webpack_require__(3);
-const store_1 = __webpack_require__(5);
-const react_router_dom_1 = __webpack_require__(31);
+const store_1 = __webpack_require__(6);
+const react_router_dom_1 = __webpack_require__(5);
 const NotFound_1 = __webpack_require__(32);
 const Content_1 = __webpack_require__(34);
+const Stats_1 = __webpack_require__(59);
 function AppComponent() {
     const [mouted, setMounted] = (0, react_1.useState)(false);
     (0, react_1.useEffect)(() => {
         setMounted(true);
     }, []);
-    return ((0, jsx_runtime_1.jsxs)(react_redux_1.Provider, Object.assign({ store: store_1.store }, { children: [(0, jsx_runtime_1.jsxs)(react_router_dom_1.Routes, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "*", element: (0, jsx_runtime_1.jsx)(NotFound_1.NotFound, {}) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "/", element: (0, jsx_runtime_1.jsxs)(Layout_1.Layout, { children: [(0, jsx_runtime_1.jsx)(Header_1.Header, {}), (0, jsx_runtime_1.jsx)(Content_1.Content, {})] }) })] }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Routes, { children: (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: "*", element: (0, jsx_runtime_1.jsx)("span", {}) }) })] })));
+    return ((0, jsx_runtime_1.jsx)(react_redux_1.Provider, Object.assign({ store: store_1.store }, { children: (0, jsx_runtime_1.jsxs)(react_router_dom_1.Routes, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: '*', element: (0, jsx_runtime_1.jsx)(NotFound_1.NotFound, {}) }), (0, jsx_runtime_1.jsxs)(react_router_dom_1.Route, Object.assign({ path: '/', element: (0, jsx_runtime_1.jsx)(Layout_1.Layout, { children: (0, jsx_runtime_1.jsx)(Header_1.Header, {}) }) }, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: '/', element: (0, jsx_runtime_1.jsx)(Content_1.Content, {}) }), (0, jsx_runtime_1.jsx)(react_router_dom_1.Route, { path: '/stats', element: (0, jsx_runtime_1.jsx)(Stats_1.Stats, {}) })] }))] }) })));
 }
 exports.App = (0, root_1.hot)(() => (0, jsx_runtime_1.jsx)(AppComponent, {}));
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-hot-loader/root");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -396,11 +418,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(17), exports);
+__exportStar(__webpack_require__(18), exports);
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -411,15 +433,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Layout = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const layout_css_1 = __importDefault(__webpack_require__(18));
+const layout_css_1 = __importDefault(__webpack_require__(19));
+const react_router_dom_1 = __webpack_require__(5);
 function Layout({ children }) {
-    return (0, jsx_runtime_1.jsx)("div", Object.assign({ className: layout_css_1.default.layout }, { children: children }));
+    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ className: layout_css_1.default.layout }, { children: [children, (0, jsx_runtime_1.jsx)(react_router_dom_1.Outlet, {})] })));
 }
 exports.Layout = Layout;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -429,11 +452,11 @@ module.exports = {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(20);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(21);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 exports.push([module.i, "@import url(https://fonts.cdnfonts.com/css/sf-ui-display);"]);
 // Module
@@ -443,7 +466,7 @@ module.exports = exports;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -524,7 +547,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -544,11 +567,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(22), exports);
+__exportStar(__webpack_require__(23), exports);
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -559,17 +582,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Header = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const header_css_1 = __importDefault(__webpack_require__(23));
+const header_css_1 = __importDefault(__webpack_require__(24));
 const Icon_1 = __webpack_require__(2);
-const Logo_png_1 = __importDefault(__webpack_require__(25));
+const Logo_png_1 = __importDefault(__webpack_require__(26));
+const react_router_dom_1 = __webpack_require__(5);
 function Header() {
-    return ((0, jsx_runtime_1.jsx)("header", Object.assign({ className: header_css_1.default.header }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.container }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.logoBlock }, { children: [(0, jsx_runtime_1.jsx)("img", { src: Logo_png_1.default }), "pomodoro_timer"] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.statBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: "statistic", size: 16 }), "Statistic"] }))] })) })));
+    return ((0, jsx_runtime_1.jsx)("header", Object.assign({ className: header_css_1.default.header }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.container }, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: '/' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.logoBlock }, { children: [(0, jsx_runtime_1.jsx)("img", { src: Logo_png_1.default }), "pomodoro_timer"] })) })), (0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: 'stats' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.statBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'statistic', size: 16 }), "Statistic"] })) }))] })) })));
 }
 exports.Header = Header;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -582,7 +606,7 @@ module.exports = {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -635,7 +659,7 @@ exports.Icon = Icon;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -643,35 +667,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAATCSURBVHgBzZjfTxxVFMfPvQMEFkhXWqiWKLMUTJZGhUSNMSkMMTE2NQovPvhi+xdA/wLKUxNf0Afja31q36DRVmNiGKn6RCIaC7HF7NSIhFLt8GOXZXfn3p4zw0z31+yvgXa/yWbu3Lkz+7nnnnPuD4CAunZz7PL1Wx/K67c+mIEjEIeA4ky+5pTY5FFABgZkkk0zAPPgbvLa1+9rcIgKDPjR+bklYbFx954pypRbvvKlpn76hTZxZUZToUY1QJWamdHCmSY+IaQckyBNxmHpuRsGpN7uMhPPt4Sxibb48SuzP73eEd63mNaYEqbF2A2oUayaxjFNDYPgn+Afjhk9IW3lTBgSrU4fW9ub4ERns13eWU/A/3sZuzzwhwkDy1smSJgTCv+qX1/VoQpVBEhgGcEn0R8mJEDYrY8j3IJ20obknMGLartdv7uTgv82k9Aaz8B7N9fs56F45uAPpSG4crFS0LKAf53tncRWU9lg2cqGJEACTaL1NtCK4UcpiLc1QLrRcfUTCH1qbQ+6/0kQ/NVtRVwa0g2zJkCymiWVWZBSgzIiyB/efQG6Th+DhgYGmYyAtb93i7YlS4bNFPTd3YauzaTBuRyN6IYB1QAinCoEn0erqcWe/9sdwl+LDUaWw0Cwrx0vtUFzC9bF07C5see1b0wL6P9zG3qMOIQSmTwAaVhcjr+sG0sVAZaCI6DFN4/Dw4NgKKbmZgVSCCyE9OqG5zegE4e3hEyFi6FilizIg5jTZvwsR76WD+cOV/SO40rJpJUDZ783ehIW3zgOiZBvVgsLweZ/pSyRp5w3KCAkg7FiX1jOSik0ZD2xXXT4BFpm364z1Lac9mQ1srb7zv1IGzzsaoa3ft60O5UvCUxtR+Ng8WJ2vTfE5Yb2u/Pdni/13duxy9n6Fp+7MBQI5zC9OOCt8PtQhxfJlHre+X694H0PlIvRft3Q3XtviIXFx/yGduXMMRvs3DdrEF3eKvi4GW7y4FwIVyoGBgG5eZA6S9B+Yhabyr5/4oMMJvxeit7Zgld/e+Tb63RTriv3GLkphoCH9Q0Pch2zgD8h0+5pqpYDGNP6B/2s5/5BNep8sF/0GwRJnSSLl1K2FZ2uC2sEDkkUPPm5LhsyinMzWdz1yeKETHMj2m4lsAICyB06AhhAdyilfgywzgfJ0oCoNgtGPEC/ebZSNaUc36R86Ge9bEXLdMIW4xpdnNCTMhAg+RVZhdJPJSozq9hiUqp0dezMglmQRAFwqGJskC4HjsAMqFPZgE82PfUnx4JSGlCncqKYsx+h3nRgNBtQAUuH+pPtdjZghPYFUupQT2Jyji5eOpeKnIY6UpqD7XY5S/7V4d4YlFg0PDXhaPbdjo1SMXdC5OIS1IOYvOoV85+tno3MQ8DFQzBJo28hFnHvCpYUaUXSnsCAZ6Q07pOz7wsAo7j1wy3g+LOYXRiIy9G8rWfRRRmmnSX5lP2R4E4vGNOF9SWEO71BS/BZOOLI9oNznpXRCm5HG3E7CkcCKQ1FyguR24bvVFvx+eBdrfcCF0CbGRWCy0SrfbbN4fOaT7f8FAgUEzBjUq8EDGoFdEX+iScRI3Q8h8clKn4KfzkrcwOJTDzS0BmwpVBG6Kd+id2HKvUYcwkTZClD4twAAAAASUVORK5CYII=");
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-devtools-extension");
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rootReducer = void 0;
-const store_1 = __webpack_require__(5);
+const store_1 = __webpack_require__(6);
 const actions_1 = __webpack_require__(4);
 const rootReducer = (state = store_1.initialState, action) => {
     switch (action.type) {
+        case actions_1.STAT_ADD: {
+            if (state.stats.find((el) => {
+                return el.date.getDate() === new Date().getDate();
+            })) {
+                return Object.assign(Object.assign({}, state), { stats: state.stats.map((el) => {
+                        if (el.date.getDate() === action.stat.date.getDate()) {
+                            return Object.assign(Object.assign({}, el), { stops: el.stops + action.stat.stops, pauseTime: el.pauseTime + action.stat.pauseTime, workTime: el.workTime + action.stat.workTime, tomato: el.tomato + action.stat.tomato });
+                        }
+                    }) });
+            }
+            else {
+                return Object.assign(Object.assign({}, state), { stats: state.stats.concat(action.stat) });
+            }
+        }
         case actions_1.SET_TASKS: {
             return Object.assign(Object.assign({}, state), { tasks: action.tasks });
         }
@@ -715,7 +753,7 @@ exports.rootReducer = rootReducer;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -727,12 +765,6 @@ function assoc(key, value) {
 }
 exports.assoc = assoc;
 
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
 
 /***/ }),
 /* 32 */
@@ -811,7 +843,7 @@ exports.Content = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
 const content_css_1 = __importDefault(__webpack_require__(36));
 const Timer_1 = __webpack_require__(37);
-const TaskList_1 = __webpack_require__(44);
+const TaskList_1 = __webpack_require__(45);
 function Content() {
     return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: content_css_1.default.container }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: content_css_1.default.content }, { children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("h2", { children: "\u0423\u0440\u0430! \u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\u043E \u043D\u0430\u0447\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C:" }), (0, jsx_runtime_1.jsxs)("ul", Object.assign({ className: content_css_1.default.infoList }, { children: [(0, jsx_runtime_1.jsx)("li", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044E \u0438 \u043D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u0437\u0430\u0434\u0430\u0447\u0438" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u0435 \u0442\u0430\u0439\u043C\u0435\u0440 (\u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB)" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0420\u0430\u0431\u043E\u0442\u0430\u0439\u0442\u0435 \u043F\u043E\u043A\u0430 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB \u043D\u0435 \u043F\u0440\u043E\u0437\u0432\u043E\u043D\u0438\u0442" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0421\u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u043A\u043E\u0440\u043E\u0442\u043A\u0438\u0439 \u043F\u0435\u0440\u0435\u0440\u044B\u0432 (3-5 \u043C\u0438\u043D\u0443\u0442)" }), (0, jsx_runtime_1.jsx)("li", { children: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0439\u0442\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB \u0437\u0430 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u043E\u043C\u00BB, \u043F\u043E\u043A\u0430 \u0437\u0430\u0434\u0430\u0447\u0430 \u043D\u0435 \u0431\u0443\u0434\u0443\u0442 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041A\u0430\u0436\u0434\u044B\u0435 4 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u0430\u00BB \u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u0434\u043B\u0438\u043D\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0440\u044B\u0432 (15-30 \u043C\u0438\u043D\u0443\u0442)." })] })), (0, jsx_runtime_1.jsx)(TaskList_1.TaskList, {})] }), (0, jsx_runtime_1.jsx)(Timer_1.Timer, {})] })) })));
 }
@@ -870,17 +902,17 @@ const react_1 = __webpack_require__(1);
 const timer_css_1 = __importDefault(__webpack_require__(39));
 const react_redux_1 = __webpack_require__(3);
 const Icon_1 = __webpack_require__(2);
-const Button_1 = __webpack_require__(8);
-const classnames_1 = __importDefault(__webpack_require__(7));
+const Button_1 = __webpack_require__(9);
+const classnames_1 = __importDefault(__webpack_require__(8));
 const actions_1 = __webpack_require__(4);
 const use_sound_1 = __importDefault(__webpack_require__(42));
 const beep_mp3_1 = __importDefault(__webpack_require__(43));
-// const WORK = 2
-const WORK = 1500;
-// const TIMEOUT = 2
-const TIMEOUT = 300;
-let timerContainer = null;
+const useWorker_1 = __webpack_require__(44);
+const WORK = 2;
+const TIMEOUT = 2;
 function Timer() {
+    const [value, setValue] = (0, react_1.useState)(null);
+    const { result, run } = (0, useWorker_1.useWebworker)();
     const [play] = (0, use_sound_1.default)(beep_mp3_1.default);
     const dispatch = (0, react_redux_1.useDispatch)();
     const task = (0, react_redux_1.useSelector)((state) => state.tasks.find((task) => !task.done));
@@ -890,13 +922,14 @@ function Timer() {
     const addTime = () => {
         setTime((time) => time + 60);
     };
+    (0, react_1.useEffect)(() => {
+        setTime((time) => time - 1);
+        checkTimer();
+    }, [result]);
     const startTimer = () => {
         if (mode === 'stop' || mode === 'pause') {
             setMode('start');
-            setTime((time) => time - 1);
-            timerContainer = setInterval(() => {
-                setTime((time) => (time - 1 ? time - 1 : 0));
-            }, 1000);
+            run('start');
         }
     };
     (0, react_1.useEffect)(() => {
@@ -904,38 +937,41 @@ function Timer() {
         setMode('stop');
         setPart('work');
     }, [task]);
-    (0, react_1.useEffect)(() => {
-        checkTimer();
-    }, [time]);
     const checkTimer = () => {
-        if (time < 0) {
+        if (time <= 0) {
             endTimer();
         }
     };
     const stopTimer = () => {
-        if (timerContainer !== null && mode === 'start') {
-            clearInterval(timerContainer);
+        if (mode === 'start') {
+            run('stop');
             setTime(WORK);
             setMode('stop');
         }
     };
     const pauseTimer = () => {
-        if (timerContainer !== null && mode == 'start') {
+        if (mode == 'start') {
             setMode('pause');
-            clearInterval(timerContainer);
+            run('pause');
         }
     };
     const endTimer = () => {
-        console.log(mode);
-        if (timerContainer !== null && part == 'work') {
-            clearInterval(timerContainer);
+        if (part == 'work') {
+            dispatch((0, actions_1.statAdd)({
+                date: new Date(),
+                pomodoro: 1,
+                pauseTime: 0,
+                workTime: 1500,
+                stops: 1,
+            }));
+            run('stop');
             setTime(TIMEOUT);
             setPart('timeout');
             setMode('stop');
             play();
         }
-        if (timerContainer !== null && part == 'timeout') {
-            clearInterval(timerContainer);
+        if (part == 'timeout') {
+            run('stop');
             setTime(WORK);
             setPart('work');
             setMode('stop');
@@ -949,8 +985,8 @@ function Timer() {
         }
     };
     const skipWork = () => {
-        if (timerContainer !== null && part == 'work') {
-            clearInterval(timerContainer);
+        if (part == 'work') {
+            run('stop');
             setTime(TIMEOUT);
             setPart('timeout');
             setMode('stop');
@@ -1052,6 +1088,58 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useWebworker = void 0;
+const react_1 = __webpack_require__(1);
+const workerHandler = () => {
+    let timerContainer = 0;
+    onmessage = (event) => {
+        switch (event.data) {
+            case 'start':
+                {
+                    postMessage('tick');
+                    timerContainer = setInterval(() => {
+                        postMessage('tick');
+                    }, 1000);
+                }
+                break;
+            case 'pause':
+                {
+                    clearInterval(timerContainer);
+                }
+                break;
+            case 'stop': {
+                clearInterval(timerContainer);
+                break;
+            }
+        }
+    };
+};
+const useWebworker = () => {
+    const [result, setResult] = (0, react_1.useState)(0);
+    const workerRef = (0, react_1.useRef)(null);
+    (0, react_1.useEffect)(() => {
+        const worker = new Worker(URL.createObjectURL(new Blob([`(${workerHandler})()`])));
+        workerRef.current = worker;
+        worker.onmessage = () => setResult(result => result + 1);
+        return () => {
+            worker.terminate();
+        };
+    }, []);
+    return {
+        result,
+        run: (value) => { var _a; return (_a = workerRef.current) === null || _a === void 0 ? void 0 : _a.postMessage(value); }
+    };
+};
+exports.useWebworker = useWebworker;
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -1067,11 +1155,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(45), exports);
+__exportStar(__webpack_require__(46), exports);
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1083,15 +1171,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskList = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
 const react_1 = __webpack_require__(1);
-const tasklist_css_1 = __importDefault(__webpack_require__(46));
-const Button_1 = __webpack_require__(8);
-const Break_1 = __webpack_require__(47);
-const Task_1 = __webpack_require__(50);
-const store_1 = __webpack_require__(5);
+const tasklist_css_1 = __importDefault(__webpack_require__(47));
+const Button_1 = __webpack_require__(9);
+const Break_1 = __webpack_require__(48);
+const Task_1 = __webpack_require__(51);
+const store_1 = __webpack_require__(6);
 const actions_1 = __webpack_require__(4);
 const react_redux_1 = __webpack_require__(3);
-const core_1 = __webpack_require__(57);
-const sortable_1 = __webpack_require__(9);
+const core_1 = __webpack_require__(58);
+const sortable_1 = __webpack_require__(10);
 function TaskList() {
     const dispatch = (0, react_redux_1.useDispatch)();
     const list = (0, react_redux_1.useSelector)((state) => state.tasks);
@@ -1169,7 +1257,7 @@ function getHoursSuffix(hours) {
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1180,7 +1268,7 @@ module.exports = {
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1200,11 +1288,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(48), exports);
+__exportStar(__webpack_require__(49), exports);
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1215,8 +1303,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Break = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const break_css_1 = __importDefault(__webpack_require__(49));
-const classnames_1 = __importDefault(__webpack_require__(7));
+const break_css_1 = __importDefault(__webpack_require__(50));
+const classnames_1 = __importDefault(__webpack_require__(8));
 function Break(props) {
     const { inline = false, top = false, size, mobileSize, tabletSize, desktopSize, } = props;
     return ((0, jsx_runtime_1.jsx)("div", { className: (0, classnames_1.default)(break_css_1.default[`s${size}`], { [break_css_1.default[`mobile_s${mobileSize}`]]: mobileSize }, { [break_css_1.default[`tablet_s${tabletSize}`]]: tabletSize }, { [break_css_1.default[`desktop_s${desktopSize}`]]: desktopSize }, { [break_css_1.default.inline]: inline }, { [break_css_1.default.top]: top }) }));
@@ -1225,7 +1313,7 @@ exports.Break = Break;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1257,7 +1345,7 @@ module.exports = {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1277,11 +1365,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(51), exports);
+__exportStar(__webpack_require__(52), exports);
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1293,15 +1381,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Task = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
 const react_1 = __webpack_require__(1);
-const task_css_1 = __importDefault(__webpack_require__(52));
+const task_css_1 = __importDefault(__webpack_require__(53));
 const Icon_1 = __webpack_require__(2);
-const generateRandomIndex_1 = __webpack_require__(6);
-const Dropdown_1 = __webpack_require__(53);
-const GenericList_1 = __webpack_require__(56);
+const generateRandomIndex_1 = __webpack_require__(7);
+const Dropdown_1 = __webpack_require__(54);
+const GenericList_1 = __webpack_require__(57);
 const react_redux_1 = __webpack_require__(3);
 const actions_1 = __webpack_require__(4);
-const classnames_1 = __importDefault(__webpack_require__(7));
-const sortable_1 = __webpack_require__(9);
+const classnames_1 = __importDefault(__webpack_require__(8));
+const sortable_1 = __webpack_require__(10);
 function Task({ text, tomato, id }) {
     const { attributes, listeners, setNodeRef, transition } = (0, sortable_1.useSortable)({ id });
     const dispatch = (0, react_redux_1.useDispatch)();
@@ -1374,7 +1462,7 @@ exports.Task = Task;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1389,7 +1477,7 @@ module.exports = {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1409,11 +1497,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(54), exports);
+__exportStar(__webpack_require__(55), exports);
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1448,7 +1536,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dropdown = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
 const react_1 = __importStar(__webpack_require__(1));
-const dropdown_css_1 = __importDefault(__webpack_require__(55));
+const dropdown_css_1 = __importDefault(__webpack_require__(56));
 function Dropdown({ button, children, isOpen, onOpen, onClose, }) {
     const [isDropdownOpen, setIsDropdownOpen] = react_1.default.useState(isOpen);
     const handleOpen = () => {
@@ -1472,7 +1560,7 @@ exports.Dropdown = Dropdown;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1486,7 +1574,7 @@ module.exports = {
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1503,13 +1591,75 @@ exports.GenericList = GenericList;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = require("@dnd-kit/core");
 
 /***/ }),
-/* 58 */
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+__exportStar(__webpack_require__(60), exports);
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Stats = void 0;
+const jsx_runtime_1 = __webpack_require__(0);
+const stats_css_1 = __importDefault(__webpack_require__(61));
+function Stats() {
+    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ className: stats_css_1.default.container }, { children: [(0, jsx_runtime_1.jsxs)("div", Object.assign({ className: stats_css_1.default.header }, { children: [(0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.headerTitle }, { children: "\u0412\u0430\u0448\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C" })), (0, jsx_runtime_1.jsx)("select", Object.assign({ className: stats_css_1.default.headerTitle }, { children: "\u0412\u0430\u0448\u0430 \u0430\u043A\u0442\u0438\u0432\u043D\u043E\u0441\u0442\u044C" }))] })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: stats_css_1.default.statWrapper }, { children: [(0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.date }, { children: "1" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.tomato }, { children: "2" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.dio }, { children: "3" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.focus }, { children: "4" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.pause }, { children: "5" })), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: stats_css_1.default.stop }, { children: "6" }))] }))] })));
+}
+exports.Stats = Stats;
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
+
+// Exports
+module.exports = {
+	"container": "stats__container--3KfA4",
+	"header": "stats__header--yuAMW",
+	"headerTitle": "stats__headerTitle--D8afd",
+	"statWrapper": "stats__statWrapper--2OUBm",
+	"date": "stats__date--1jnff",
+	"tomato": "stats__tomato--1LMH6",
+	"dio": "stats__dio--AlQzd",
+	"focus": "stats__focus--18Qf9",
+	"pause": "stats__pause--1OZ7Y",
+	"stop": "stats__stop--13dor"
+};
+
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom/server");

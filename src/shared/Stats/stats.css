@@ -1,0 +1,47 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.header {
+    padding-top: 88px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.headerTitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+}
+.statWrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1.45fr repeat(2, 1fr);
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+    height: 682px;
+}
+
+.date {
+    grid-area: 1/1/2/4;
+}
+.tomato {
+    grid-area: 2/1/3/4;
+}
+.dio {
+    grid-area: 1/4/3/13;
+}
+.focus {
+    grid-area: 3/1/4/5;
+}
+.pause {
+    grid-area: 3/5/4/9;
+}
+.stop {
+    grid-area: 3/9/4/13;
+}
+
+.statWrapper div {
+    background-color: #333333;
+}
