@@ -908,8 +908,8 @@ const actions_1 = __webpack_require__(4);
 const use_sound_1 = __importDefault(__webpack_require__(42));
 const beep_mp3_1 = __importDefault(__webpack_require__(43));
 const useWorker_1 = __webpack_require__(44);
-const WORK = 2;
-const TIMEOUT = 2;
+const WORK = 1500;
+const TIMEOUT = 300;
 function Timer() {
     const [value, setValue] = (0, react_1.useState)(null);
     const { result, run } = (0, useWorker_1.useWebworker)();

@@ -11,9 +11,9 @@ import boopSfx from '../../assets/beep.mp3'
 import {useWebworker} from '../../hooks/useWorker'
 
 
-const WORK = 2
+const WORK = 1500
 
-const TIMEOUT = 2
+const TIMEOUT = 300
 
 
 export function Timer() {
