@@ -5,7 +5,7 @@ import {
   DEC_TOMATO,
   DELETE_TASK,
   EDIT_TASK,
-  INC_TOMATO, SET_TASKS, SET_TIME, SET_TIMER_EVENT, SET_TIMER_MODE, SET_TIMER_PART, setTime, STAT_ADD,
+  INC_TOMATO, SET_TASKS, SET_THEME, SET_TIME, SET_TIMER_EVENT, SET_TIMER_MODE, SET_TIMER_PART, setTime, STAT_ADD,
 } from './actions'
 import { generateRandomString } from '../util/react/generateRandomIndex'
 
@@ -23,6 +23,9 @@ export const rootReducer: (state: any, action: any) => RootState = (
   action
 ) => {
   switch (action.type) {
+    case SET_THEME: {
+      return {...state, theme: action.theme}
+    }
     case SET_TIMER_EVENT: {
       return {...state,timerModel: {...state.timerModel, event: action.event}}
     }

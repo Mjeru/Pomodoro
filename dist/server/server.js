@@ -139,7 +139,7 @@ module.exports = require("react-redux");
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setTimerEvent = exports.SET_TIMER_EVENT = exports.setTimerPart = exports.SET_TIMER_PART = exports.setTime = exports.SET_TIME = exports.setTimerMode = exports.SET_TIMER_MODE = exports.statAdd = exports.STAT_ADD = exports.setTasks = exports.SET_TASKS = exports.deleteTask = exports.DELETE_TASK = exports.editTask = exports.EDIT_TASK = exports.decTomato = exports.DEC_TOMATO = exports.incTomato = exports.INC_TOMATO = exports.addTask = exports.ADD_TASK = void 0;
+exports.setTheme = exports.SET_THEME = exports.setTimerEvent = exports.SET_TIMER_EVENT = exports.setTimerPart = exports.SET_TIMER_PART = exports.setTime = exports.SET_TIME = exports.setTimerMode = exports.SET_TIMER_MODE = exports.statAdd = exports.STAT_ADD = exports.setTasks = exports.SET_TASKS = exports.deleteTask = exports.DELETE_TASK = exports.editTask = exports.EDIT_TASK = exports.decTomato = exports.DEC_TOMATO = exports.incTomato = exports.INC_TOMATO = exports.addTask = exports.ADD_TASK = void 0;
 const generateRandomIndex_1 = __webpack_require__(6);
 exports.ADD_TASK = "ADD_TASK";
 const addTask = (title) => ({
@@ -208,6 +208,12 @@ const setTimerEvent = (event) => ({
     event
 });
 exports.setTimerEvent = setTimerEvent;
+exports.SET_THEME = 'SET_THEME';
+const setTheme = (theme) => ({
+    type: exports.SET_THEME,
+    theme
+});
+exports.setTheme = setTheme;
 
 
 /***/ }),
@@ -218,7 +224,7 @@ exports.setTimerEvent = setTimerEvent;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateId = exports.assignId = exports.generateRandomString = void 0;
-const assoc_1 = __webpack_require__(38);
+const assoc_1 = __webpack_require__(28);
 const generateRandomString = () => Math.random().toString(36).substring(2, 15);
 exports.generateRandomString = generateRandomString;
 exports.assignId = (0, assoc_1.assoc)("id", (0, exports.generateRandomString)());
@@ -247,157 +253,12 @@ const redux_1 = __webpack_require__(52);
 const redux_devtools_extension_1 = __webpack_require__(53);
 const redux_thunk_1 = __importDefault(__webpack_require__(54));
 const reducer_1 = __webpack_require__(55);
-const generateRandomIndex_1 = __webpack_require__(6);
 const redux_persist_1 = __webpack_require__(56);
 const storage_1 = __importDefault(__webpack_require__(57));
 exports.initialState = {
     theme: 'dark',
-    stats: [
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date(),
-            tomato: 0,
-            workTime: 0,
-            pauseTime: 0,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.30.23'),
-            tomato: 2,
-            workTime: 2500,
-            pauseTime: 124,
-            stops: 3,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.29.23'),
-            tomato: 3,
-            workTime: 2660,
-            pauseTime: 233,
-            stops: 4,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.28.23'),
-            tomato: 3,
-            workTime: 2660,
-            pauseTime: 233,
-            stops: 4,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.27.23'),
-            tomato: 2,
-            workTime: 2500,
-            pauseTime: 124,
-            stops: 3,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.26.23'),
-            tomato: 4,
-            workTime: 1500,
-            pauseTime: 0,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.25.23'),
-            tomato: 4,
-            workTime: 4500,
-            pauseTime: 4500,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.24.23'),
-            tomato: 3,
-            workTime: 3660,
-            pauseTime: 1383,
-            stops: 4,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.23.23'),
-            tomato: 3,
-            workTime: 2660,
-            pauseTime: 2033,
-            stops: 4,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.22.23'),
-            tomato: 2,
-            workTime: 5500,
-            pauseTime: 1024,
-            stops: 3,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.21.23'),
-            tomato: 4,
-            workTime: 2500,
-            pauseTime: 0,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.20.23'),
-            tomato: 2,
-            workTime: 2500,
-            pauseTime: 124,
-            stops: 3,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.19.23'),
-            tomato: 4,
-            workTime: 1500,
-            pauseTime: 0,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.18.23'),
-            tomato: 3,
-            workTime: 2660,
-            pauseTime: 233,
-            stops: 4,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.17.23'),
-            tomato: 4,
-            workTime: 1500,
-            pauseTime: 0,
-            stops: 0,
-        },
-        {
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            date: new Date('5.16.23'),
-            tomato: 2,
-            workTime: 2500,
-            pauseTime: 124,
-            stops: 3,
-        },
-    ],
-    tasks: [
-        {
-            title: 'Сверстать сайт',
-            tomato: 1,
-            complete: 0,
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            done: false,
-        },
-        {
-            title: 'Aдаптив',
-            complete: 0,
-            tomato: 1,
-            id: (0, generateRandomIndex_1.generateRandomString)(),
-            done: false,
-        },
-    ],
+    stats: [],
+    tasks: [],
     timerModel: {
         options: {
             workTime: 1500,
@@ -443,7 +304,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(36), exports);
+__exportStar(__webpack_require__(37), exports);
 
 
 /***/ }),
@@ -626,8 +487,8 @@ const Header_1 = __webpack_require__(24);
 const react_redux_1 = __webpack_require__(4);
 // import { store } from './store'
 const react_router_dom_1 = __webpack_require__(7);
-const NotFound_1 = __webpack_require__(28);
-const Content_1 = __webpack_require__(30);
+const NotFound_1 = __webpack_require__(29);
+const Content_1 = __webpack_require__(31);
 const Stats_1 = __webpack_require__(59);
 const TimerContainer_1 = __webpack_require__(83);
 const actions_1 = __webpack_require__(5);
@@ -837,8 +698,15 @@ const jsx_runtime_1 = __webpack_require__(0);
 const header_css_1 = __importDefault(__webpack_require__(26));
 const Icon_1 = __webpack_require__(2);
 const react_router_dom_1 = __webpack_require__(7);
+const react_redux_1 = __webpack_require__(4);
+const actions_1 = __webpack_require__(5);
 function Header() {
-    return ((0, jsx_runtime_1.jsx)("header", Object.assign({ className: header_css_1.default.header }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.container }, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: '/' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.logoBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'tomatoLogo' }), "pomodoro_box"] })) })), (0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: 'stats' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.statBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'statistic', size: 16 }), "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430"] })) }))] })) })));
+    const theme = (0, react_redux_1.useSelector)(state => state.theme);
+    const dispatch = (0, react_redux_1.useDispatch)();
+    const changeTheme = () => {
+        dispatch((0, actions_1.setTheme)(theme !== 'dark' ? 'dark' : 'light'));
+    };
+    return ((0, jsx_runtime_1.jsx)("header", Object.assign({ className: header_css_1.default.header }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.container }, { children: [(0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: '/' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.logoBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'tomatoLogo' }), "pomodoro_box"] })) })), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.statWrapper }, { children: [(0, jsx_runtime_1.jsx)("input", { onChange: changeTheme, checked: theme === 'dark', type: "checkbox", id: "switch" }), (0, jsx_runtime_1.jsx)("div", Object.assign({ className: header_css_1.default.app }, { children: (0, jsx_runtime_1.jsx)("div", Object.assign({ className: header_css_1.default.content }, { children: (0, jsx_runtime_1.jsxs)("label", Object.assign({ htmlFor: "switch" }, { children: [(0, jsx_runtime_1.jsx)("div", { className: header_css_1.default.toggle }), (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.names }, { children: [(0, jsx_runtime_1.jsx)("p", Object.assign({ className: header_css_1.default.light }, { children: (0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'sun' }) })), (0, jsx_runtime_1.jsx)("p", Object.assign({ className: header_css_1.default.dark }, { children: (0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'moon' }) }))] }))] })) })) })), (0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(react_router_dom_1.Link, Object.assign({ to: 'stats' }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: header_css_1.default.statBlock }, { children: [(0, jsx_runtime_1.jsx)(Icon_1.Icon, { iconName: 'statistic', size: 16 }), "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043A\u0430"] })) })) })] }))] })) })));
 }
 exports.Header = Header;
 
@@ -852,7 +720,15 @@ module.exports = {
 	"header": "header__header--bAgyG",
 	"container": "header__container--2eZxl",
 	"logoBlock": "header__logoBlock--2nQWQ",
-	"statBlock": "header__statBlock--2YowI"
+	"statBlock": "header__statBlock--2YowI",
+	"app": "header__app--fGRQl",
+	"content": "header__content--2YKyN",
+	"toggle": "header__toggle--35GAX",
+	"names": "header__names--1i_9K",
+	"dark": "header__dark--3DCX3",
+	"mark": "header__mark--1ewfn",
+	"light": "header__light--1ys3E",
+	"statWrapper": "header__statWrapper--1mE7N"
 };
 
 
@@ -869,6 +745,14 @@ function Icon(props) {
     const { iconName, size } = props;
     let iconSvg;
     switch (iconName) {
+        case 'moon': {
+            iconSvg = ((0, jsx_runtime_1.jsx)("svg", Object.assign({ id: "Layer_1", version: "1.1", viewBox: "0 0 512 512", width: "40px", height: "40px", xmlSpace: "preserve" }, { children: (0, jsx_runtime_1.jsx)("path", { d: "M349.852,343.15c-49.875,49.916-131.083,49.916-181,0c-49.916-49.918-49.916-131.125,0-181.021  c13.209-13.187,29.312-23.25,47.832-29.812c5.834-2.042,12.293-0.562,16.625,3.792c4.376,4.375,5.855,10.833,3.793,16.625  c-12.542,35.375-4,73.666,22.25,99.917c26.209,26.228,64.5,34.75,99.916,22.25c5.792-2.062,12.271-0.582,16.625,3.793  c4.376,4.332,5.834,10.812,3.771,16.625C373.143,313.838,363.06,329.941,349.852,343.15z M191.477,184.754  c-37.438,37.438-37.438,98.354,0,135.771c40,40.021,108.125,36.416,143-8.168c-35.959,2.25-71.375-10.729-97.75-37.084  c-26.375-26.354-39.333-61.771-37.084-97.729C196.769,179.796,194.039,182.192,191.477,184.754z" }) })));
+            break;
+        }
+        case 'sun': {
+            iconSvg = ((0, jsx_runtime_1.jsx)("svg", Object.assign({ viewBox: "0 0 50 50", width: "40px", height: "40px" }, { children: (0, jsx_runtime_1.jsx)("path", { d: "M 24.90625 3.96875 C 24.863281 3.976563 24.820313 3.988281 24.78125 4 C 24.316406 4.105469 23.988281 4.523438 24 5 L 24 11 C 23.996094 11.359375 24.183594 11.695313 24.496094 11.878906 C 24.808594 12.058594 25.191406 12.058594 25.503906 11.878906 C 25.816406 11.695313 26.003906 11.359375 26 11 L 26 5 C 26.011719 4.710938 25.894531 4.433594 25.6875 4.238281 C 25.476563 4.039063 25.191406 3.941406 24.90625 3.96875 Z M 10.65625 9.84375 C 10.28125 9.910156 9.980469 10.183594 9.875 10.546875 C 9.769531 10.914063 9.878906 11.304688 10.15625 11.5625 L 14.40625 15.8125 C 14.648438 16.109375 15.035156 16.246094 15.410156 16.160156 C 15.78125 16.074219 16.074219 15.78125 16.160156 15.410156 C 16.246094 15.035156 16.109375 14.648438 15.8125 14.40625 L 11.5625 10.15625 C 11.355469 9.933594 11.054688 9.820313 10.75 9.84375 C 10.71875 9.84375 10.6875 9.84375 10.65625 9.84375 Z M 39.03125 9.84375 C 38.804688 9.875 38.59375 9.988281 38.4375 10.15625 L 34.1875 14.40625 C 33.890625 14.648438 33.753906 15.035156 33.839844 15.410156 C 33.925781 15.78125 34.21875 16.074219 34.589844 16.160156 C 34.964844 16.246094 35.351563 16.109375 35.59375 15.8125 L 39.84375 11.5625 C 40.15625 11.265625 40.246094 10.800781 40.0625 10.410156 C 39.875 10.015625 39.460938 9.789063 39.03125 9.84375 Z M 24.90625 15 C 24.875 15.007813 24.84375 15.019531 24.8125 15.03125 C 24.75 15.035156 24.6875 15.046875 24.625 15.0625 C 24.613281 15.074219 24.605469 15.082031 24.59375 15.09375 C 19.289063 15.320313 15 19.640625 15 25 C 15 30.503906 19.496094 35 25 35 C 30.503906 35 35 30.503906 35 25 C 35 19.660156 30.746094 15.355469 25.46875 15.09375 C 25.433594 15.09375 25.410156 15.0625 25.375 15.0625 C 25.273438 15.023438 25.167969 15.003906 25.0625 15 C 25.042969 15 25.019531 15 25 15 C 24.96875 15 24.9375 15 24.90625 15 Z M 24.9375 17 C 24.957031 17 24.980469 17 25 17 C 25.03125 17 25.0625 17 25.09375 17 C 29.46875 17.050781 33 20.613281 33 25 C 33 29.421875 29.421875 33 25 33 C 20.582031 33 17 29.421875 17 25 C 17 20.601563 20.546875 17.035156 24.9375 17 Z M 4.71875 24 C 4.167969 24.078125 3.78125 24.589844 3.859375 25.140625 C 3.9375 25.691406 4.449219 26.078125 5 26 L 11 26 C 11.359375 26.003906 11.695313 25.816406 11.878906 25.503906 C 12.058594 25.191406 12.058594 24.808594 11.878906 24.496094 C 11.695313 24.183594 11.359375 23.996094 11 24 L 5 24 C 4.96875 24 4.9375 24 4.90625 24 C 4.875 24 4.84375 24 4.8125 24 C 4.78125 24 4.75 24 4.71875 24 Z M 38.71875 24 C 38.167969 24.078125 37.78125 24.589844 37.859375 25.140625 C 37.9375 25.691406 38.449219 26.078125 39 26 L 45 26 C 45.359375 26.003906 45.695313 25.816406 45.878906 25.503906 C 46.058594 25.191406 46.058594 24.808594 45.878906 24.496094 C 45.695313 24.183594 45.359375 23.996094 45 24 L 39 24 C 38.96875 24 38.9375 24 38.90625 24 C 38.875 24 38.84375 24 38.8125 24 C 38.78125 24 38.75 24 38.71875 24 Z M 15 33.875 C 14.773438 33.90625 14.5625 34.019531 14.40625 34.1875 L 10.15625 38.4375 C 9.859375 38.679688 9.722656 39.066406 9.808594 39.441406 C 9.894531 39.8125 10.1875 40.105469 10.558594 40.191406 C 10.933594 40.277344 11.320313 40.140625 11.5625 39.84375 L 15.8125 35.59375 C 16.109375 35.308594 16.199219 34.867188 16.039063 34.488281 C 15.882813 34.109375 15.503906 33.867188 15.09375 33.875 C 15.0625 33.875 15.03125 33.875 15 33.875 Z M 34.6875 33.875 C 34.3125 33.941406 34.011719 34.214844 33.90625 34.578125 C 33.800781 34.945313 33.910156 35.335938 34.1875 35.59375 L 38.4375 39.84375 C 38.679688 40.140625 39.066406 40.277344 39.441406 40.191406 C 39.8125 40.105469 40.105469 39.8125 40.191406 39.441406 C 40.277344 39.066406 40.140625 38.679688 39.84375 38.4375 L 35.59375 34.1875 C 35.40625 33.988281 35.148438 33.878906 34.875 33.875 C 34.84375 33.875 34.8125 33.875 34.78125 33.875 C 34.75 33.875 34.71875 33.875 34.6875 33.875 Z M 24.90625 37.96875 C 24.863281 37.976563 24.820313 37.988281 24.78125 38 C 24.316406 38.105469 23.988281 38.523438 24 39 L 24 45 C 23.996094 45.359375 24.183594 45.695313 24.496094 45.878906 C 24.808594 46.058594 25.191406 46.058594 25.503906 45.878906 C 25.816406 45.695313 26.003906 45.359375 26 45 L 26 39 C 26.011719 38.710938 25.894531 38.433594 25.6875 38.238281 C 25.476563 38.039063 25.191406 37.941406 24.90625 37.96875 Z" }) })));
+            break;
+        }
         case 'tomatoLogo': {
             iconSvg = ((0, jsx_runtime_1.jsxs)("svg", Object.assign({ width: "40", height: "40", viewBox: "0 0 40 40", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, { children: [(0, jsx_runtime_1.jsxs)("g", Object.assign({ clipPath: "url(#clip0_13884_174)" }, { children: [(0, jsx_runtime_1.jsx)("path", { d: "M38.9151 23.2834C38.9151 33.7058 30.466 40 20.0437 40C9.62098 40 1.17188 31.5509 1.17188 21.1282C1.17188 10.7059 9.88496 4.2981 20.3073 4.2981C30.73 4.2981 38.9151 12.8607 38.9151 23.2834Z" }), (0, jsx_runtime_1.jsx)("path", { d: "M28.238 12.6066C27.3211 11.673 25.8377 10.8048 24.733 10.551C25.3401 10.0127 25.4623 9.99494 26.2227 9.61816C28.1713 8.65365 31.0576 8.56485 31.0576 8.56485C31.0576 8.56485 27.6509 6.8042 25.1601 6.91468C24.5259 6.94257 23.8571 7.16658 23.2118 7.48403C23.5757 6.97054 23.9205 6.45998 24.1409 6.07643C24.8152 4.90368 25.524 3.42627 25.524 3.42627C25.524 3.42627 22.9122 3.56573 21.7008 5.01565C21.2407 5.56645 20.8934 6.26625 20.6392 6.92275C20.1878 6.40419 19.6896 5.94242 19.1913 5.58195C16.6999 3.77896 12.7192 4.16903 12.7192 4.16903C12.7192 4.16903 15.7263 5.87486 17.0793 7.57656C17.6076 8.2411 18.1437 8.54842 18.4642 9.29352C17.3564 9.05367 14.8569 9.13565 13.63 9.59057C10.4771 10.7599 9.11852 15.4649 9.11852 15.4649C9.11852 15.4649 12.1952 13.3443 16.3813 11.8565C17.3017 11.5295 18.2748 11.4429 19.1229 11.4578C18.7379 12.0575 18.3173 12.8363 17.999 13.7546C17.2247 15.9904 18.2479 21.3113 18.2479 21.3113C18.2479 21.3113 20.4896 18.1647 21.403 15.6157C21.8718 14.3073 21.9879 12.9936 21.9904 12.0242C22.8217 12.3931 23.8009 12.9319 24.5326 13.398C28.2794 15.7852 30.072 20.1435 30.072 20.1435C30.072 20.1435 30.5941 15.006 28.238 12.6066Z", fill: "#899441" }), (0, jsx_runtime_1.jsx)("path", { d: "M20.5008 10.3094C20.4889 10.3094 20.477 10.3091 20.4651 10.3088C19.7242 10.2896 19.1391 9.67376 19.1572 8.9334C19.1587 8.86931 19.2234 4.36125 16.7191 2.40111C16.135 1.94395 16.0318 1.09984 16.489 0.515424C16.9465 -0.0686834 17.7906 -0.171833 18.3747 0.285626C21.9559 3.08806 21.8491 8.76128 21.843 9.00145C21.8238 9.73083 21.2262 10.3094 20.5008 10.3094Z", fill: "#A8B64F" })] })), (0, jsx_runtime_1.jsx)("defs", { children: (0, jsx_runtime_1.jsx)("clipPath", Object.assign({ id: "clip0_13884_174" }, { children: (0, jsx_runtime_1.jsx)("rect", { width: "40", height: "40", fill: "white" }) })) })] })));
             break;
@@ -954,6 +838,20 @@ exports.Icon = Icon;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.assoc = void 0;
+function assoc(key, value) {
+    return (obj) => (Object.assign(Object.assign({}, obj), { [key]: value }));
+}
+exports.assoc = assoc;
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -969,11 +867,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(29), exports);
+__exportStar(__webpack_require__(30), exports);
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -988,7 +886,7 @@ exports.NotFound = NotFound;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1008,11 +906,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(31), exports);
+__exportStar(__webpack_require__(32), exports);
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1023,8 +921,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Content = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const content_css_1 = __importDefault(__webpack_require__(32));
-const Timer_1 = __webpack_require__(33);
+const content_css_1 = __importDefault(__webpack_require__(33));
+const Timer_1 = __webpack_require__(34);
 const TaskList_1 = __webpack_require__(39);
 function Content() {
     return ((0, jsx_runtime_1.jsx)("div", Object.assign({ className: content_css_1.default.container }, { children: (0, jsx_runtime_1.jsxs)("div", Object.assign({ className: content_css_1.default.content }, { children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("h2", { children: "\u0423\u0440\u0430! \u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u043D\u043E \u043D\u0430\u0447\u0430\u0442\u044C \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C:" }), (0, jsx_runtime_1.jsxs)("ul", Object.assign({ className: content_css_1.default.infoList }, { children: [(0, jsx_runtime_1.jsx)("li", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044E \u0438 \u043D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u0437\u0430\u0434\u0430\u0447\u0438" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u0435 \u0442\u0430\u0439\u043C\u0435\u0440 (\u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB)" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0420\u0430\u0431\u043E\u0442\u0430\u0439\u0442\u0435 \u043F\u043E\u043A\u0430 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB \u043D\u0435 \u043F\u0440\u043E\u0437\u0432\u043E\u043D\u0438\u0442" }), (0, jsx_runtime_1.jsx)("li", { children: "\u0421\u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u043A\u043E\u0440\u043E\u0442\u043A\u0438\u0439 \u043F\u0435\u0440\u0435\u0440\u044B\u0432 (3-5 \u043C\u0438\u043D\u0443\u0442)" }), (0, jsx_runtime_1.jsx)("li", { children: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0439\u0442\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u00BB \u0437\u0430 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u043E\u043C\u00BB, \u043F\u043E\u043A\u0430 \u0437\u0430\u0434\u0430\u0447\u0430 \u043D\u0435 \u0431\u0443\u0434\u0443\u0442 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0430. \u041A\u0430\u0436\u0434\u044B\u0435 4 \u00AB\u043F\u043E\u043C\u0438\u0434\u043E\u0440\u0430\u00BB \u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u0434\u043B\u0438\u043D\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0440\u044B\u0432 (15-30 \u043C\u0438\u043D\u0443\u0442)." })] })), (0, jsx_runtime_1.jsx)(TaskList_1.TaskList, {})] }), (0, jsx_runtime_1.jsx)(Timer_1.Timer, {})] })) })));
@@ -1033,7 +931,7 @@ exports.Content = Content;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1045,7 +943,7 @@ module.exports = {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1065,11 +963,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(__webpack_require__(34), exports);
+__exportStar(__webpack_require__(35), exports);
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1080,7 +978,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Timer = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const timer_css_1 = __importDefault(__webpack_require__(35));
+const timer_css_1 = __importDefault(__webpack_require__(36));
 const react_redux_1 = __webpack_require__(4);
 const Icon_1 = __webpack_require__(2);
 const Button_1 = __webpack_require__(9);
@@ -1152,7 +1050,7 @@ function formatTime(seconds) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1173,7 +1071,7 @@ module.exports = {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1184,7 +1082,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Button = void 0;
 const jsx_runtime_1 = __webpack_require__(0);
-const button_css_1 = __importDefault(__webpack_require__(37));
+const button_css_1 = __importDefault(__webpack_require__(38));
 function Button({ text, onClick, type }) {
     return ((0, jsx_runtime_1.jsx)(jsx_runtime_1.Fragment, { children: (0, jsx_runtime_1.jsx)("button", Object.assign({ onClick: onClick, className: button_css_1.default[type ? type : 'default'] }, { children: text })) }));
 }
@@ -1192,7 +1090,7 @@ exports.Button = Button;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 // Exports
@@ -1201,20 +1099,6 @@ module.exports = {
 	"disabledR": "button__disabledR--1yGGa",
 	"activeR": "button__activeR--EVZgE"
 };
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.assoc = void 0;
-function assoc(key, value) {
-    return (obj) => (Object.assign(Object.assign({}, obj), { [key]: value }));
-}
-exports.assoc = assoc;
 
 
 /***/ }),
@@ -1695,6 +1579,9 @@ const actions_1 = __webpack_require__(5);
 const generateRandomIndex_1 = __webpack_require__(6);
 const rootReducer = (state = store_1.initialState, action) => {
     switch (action.type) {
+        case actions_1.SET_THEME: {
+            return Object.assign(Object.assign({}, state), { theme: action.theme });
+        }
         case actions_1.SET_TIMER_EVENT: {
             return Object.assign(Object.assign({}, state), { timerModel: Object.assign(Object.assign({}, state.timerModel), { event: action.event }) });
         }
@@ -2490,6 +2377,10 @@ const react_redux_1 = __webpack_require__(4);
 const actions_1 = __webpack_require__(5);
 const useMounted_1 = __webpack_require__(87);
 function TimerContainer({ children }) {
+    const theme = (0, react_redux_1.useSelector)(state => state.theme);
+    (0, react_1.useEffect)(() => {
+        document.documentElement.dataset.theme = theme;
+    }, [theme]);
     const isMounted = (0, useMounted_1.useIsMount)();
     const didMountRef = (0, react_1.useRef)(false);
     const [workedTime, setWorkedTime] = (0, react_1.useState)(0);

@@ -126,3 +126,14 @@ export const setTimerEvent : ActionCreator<SetTimerEvent> = (event)=>({
   type: SET_TIMER_EVENT,
   event
 })
+
+export const SET_THEME = 'SET_THEME'
+export type SetTheme = {
+  type: typeof SET_THEME,
+  theme: string
+}
+export const setTheme : ActionCreator<SetTheme> = (theme)=>({
+  type: SET_THEME,
+  theme
+})
+

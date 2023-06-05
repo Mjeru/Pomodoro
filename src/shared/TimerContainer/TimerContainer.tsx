@@ -7,8 +7,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState, TaskType } from '../../store/reducer'
 import { decTomato, setTime, setTimerEvent, setTimerMode, setTimerPart, statAdd } from '../../store/actions'
 import { useIsMount } from '../../hooks/useMounted'
+import { store } from '../../store'
 
 export function TimerContainer({children}: any) {
+    const theme = useSelector<RootState,string>(state=>state.theme)
+    useEffect(() => {
+        document.documentElement.dataset.theme = theme
+    }, [theme])
     const isMounted = useIsMount()
     const didMountRef = useRef(false);
     const [workedTime, setWorkedTime] = useState(0)
