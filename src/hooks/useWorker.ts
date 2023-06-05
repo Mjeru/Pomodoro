@@ -6,12 +6,16 @@ const workerHandler = () => {
         switch (event.data){
             case 'start' :{
                 postMessage('tick')
+                clearInterval(timerContainer)
                 timerContainer = setInterval(()=>{
                     postMessage('tick')
                 },1000)
             }   break
             case 'pause' :{
                 clearInterval(timerContainer)
+                timerContainer = setInterval(()=>{
+                    postMessage('tick')
+                },1000)
             }   break
             case 'stop' : {
                 clearInterval(timerContainer)

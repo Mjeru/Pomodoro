@@ -18,16 +18,18 @@ export function Dropdown({
 }: IDropdownProps) {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
   const handleOpen = () => {
+    if (onOpen) onOpen()
     setIsDropdownOpen(!isDropdownOpen);
   };
   const close = () => {
+    if (onClose) onClose()
     setIsDropdownOpen(false);
   };
   const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (isDropdownOpen) {
       document.body.addEventListener("click", function CloseDropdown(ev: any) {
-        setIsDropdownOpen(false);
+        close();
         document.body.removeEventListener("click", CloseDropdown);
       });
     }

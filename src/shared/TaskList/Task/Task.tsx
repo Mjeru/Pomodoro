@@ -14,6 +14,7 @@ import {
 } from '../../../store/actions'
 import classNames from 'classnames'
 import { useSortable } from '@dnd-kit/sortable'
+import {CSS} from '@dnd-kit/utilities';
 
 interface ITaskProps {
     text: string
@@ -23,7 +24,7 @@ interface ITaskProps {
 }
 
 export function Task({ text, tomato, id }: ITaskProps) {
-    const { attributes, listeners, setNodeRef, transition } =
+    const { attributes, listeners, setNodeRef, transition , transform} =
         useSortable({ id })
 
     const dispatch = useDispatch()
@@ -98,9 +99,14 @@ export function Task({ text, tomato, id }: ITaskProps) {
         <div className={styles.wrapper}>
             <div className={styles.textWrapper} ref={setNodeRef}
 
-                 style={{ transition }}
+                 style={{
+                     transform: CSS.Transform.toString(transform),
+                     transition,
+                 }}
                  {...attributes}
-                 {...listeners}>
+                 {...listeners}
+                 {...transform }
+            >
                 <span
 
                     className={styles.tomato}

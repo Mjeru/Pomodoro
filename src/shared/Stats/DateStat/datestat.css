@@ -1,0 +1,19 @@
+.wrapper {
+    padding: 25px;
+}
+.title {
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+}
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+}
+.timeHighlight {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--red);
+}

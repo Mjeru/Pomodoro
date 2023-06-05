@@ -1,0 +1,14 @@
+webpackHotUpdate("main",{
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./src/shared/TaskList/TaskOverlay/taskoverlay.css":
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./src/shared/TaskList/TaskOverlay/taskoverlay.css ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".taskoverlay__tomato--31FBZ {\\r\\n    display: inline-flex;\\r\\n    margin-right: 10px;\\r\\n    width: 25px;\\r\\n    height: 25px;\\r\\n    border: 1px solid var(--greyC4);\\r\\n    border-radius: 50%;\\r\\n    align-items: center;\\r\\n    justify-content: center;\\r\\n}\\r\\n\\r\\n.taskoverlay__wrapper--17bRE:first-child {\\r\\n}\\r\\n.taskoverlay__wrapper--17bRE {\\r\\n    min-width: 370px;\\r\\n    max-width: 370px;\\r\\n    margin-top: -1px;\\r\\n\\r\\n    display: flex;\\r\\n    justify-content: space-between;\\r\\n    align-items: center;\\r\\n    font-weight: 300;\\r\\n    font-size: 16px;\\r\\n    line-height: 17px;\\r\\n    border-top: 1px solid var(--greyE4);\\r\\n    border-bottom: 1px solid var(--greyE4);\\r\\n\\r\\n}\\r\\n.taskoverlay__menuButton--21Ovo {\\r\\n    height: 25px;\\r\\n}\\r\\n.taskoverlay__textWrapper--2Z1hS {\\r\\n    padding: 15px 0;\\r\\n    flex-grow: 2;\\r\\n    display: flex;\\r\\n    align-items: center;   cursor: grab;\\r\\n}\\r\\n.taskoverlay__editInput--zcbaT {\\r\\n    font-family: \\\"SF UI Display\\\", serif;\\r\\n    outline: none;\\r\\n    border: none;\\r\\n    background-color: var(--greyF4);\\r\\n    padding: 5px 4px;\\r\\n    font-size: 16px;\\r\\n    line-height: 17px;\\r\\n}\\r\\n.taskoverlay__disabled--3iwVm svg * {\\r\\n    fill: var(--greyC4);\\r\\n}\\r\\n\", \"\"]);\n// Exports\nexports.locals = {\n\t\"tomato\": \"taskoverlay__tomato--31FBZ\",\n\t\"wrapper\": \"taskoverlay__wrapper--17bRE\",\n\t\"menuButton\": \"taskoverlay__menuButton--21Ovo\",\n\t\"textWrapper\": \"taskoverlay__textWrapper--2Z1hS\",\n\t\"editInput\": \"taskoverlay__editInput--zcbaT\",\n\t\"disabled\": \"taskoverlay__disabled--3iwVm\"\n};\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/shared/TaskList/TaskOverlay/taskoverlay.css?./node_modules/css-loader/dist/cjs.js??ref--6-1");
+
+/***/ })
+
+})

@@ -14,14 +14,15 @@ export function Header() {
             <div className={styles.container}>
                 <Link to={'/'}>
                     <div className={styles.logoBlock}>
-                        <img src={Logo} />
-                        pomodoro_timer
+                        {/*<img src={Logo} />*/}
+                        <Icon iconName={'tomatoLogo'}/>
+                        pomodoro_box
                     </div>
                 </Link>
                 <Link to={'stats'}>
                     <div className={styles.statBlock}>
                         <Icon iconName={'statistic'} size={16} />
-                        Statistic
+                        Статистика
                     </div>
                 </Link>
             </div>

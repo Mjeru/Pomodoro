@@ -5,16 +5,32 @@
   font-size: 16px;
   line-height: 17px;
   font-weight: 500;
+  height: 55px;
 }
 .default:active {
   background-color: var(--green3);
 }
 .disabledR {
   background-color: transparent;
+  height: 55px;
   color: var(--greyC4);
-  padding: 19px 50px;
+  padding: 0 50px;
   font-size: 16px;
   line-height: 17px;
   font-weight: 500;
-  border: 1px solid var(--greyC4);
+  border: 2px solid var(--greyC4);
+}
+.activeR {
+  height: 55px;
+  background-color: transparent;
+  color: var(--red);
+  padding: 0 50px;
+  font-size: 16px;
+  line-height: 17px;
+  font-weight: 500;
+  border: 2px solid var(--red);
+}
+.activeR:active {
+  background-color: var(--red);
+  color: white;
 }

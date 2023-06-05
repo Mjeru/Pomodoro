@@ -3,6 +3,7 @@ import styles from './tasklist.css'
 import { Button } from '../Button'
 import { Break } from '../Break'
 import { Task } from './Task'
+import { TaskOverlay } from './TaskOverlay'
 import { store } from '../../store'
 import { addTask, setTasks } from '../../store/actions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,7 +22,7 @@ import {
 import {
     arrayMove,
     SortableContext,
-    rectSortingStrategy,
+    rectSortingStrategy, verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 
 export type TItem = {
@@ -31,6 +32,7 @@ export type TItem = {
 
 export function TaskList() {
     const dispatch = useDispatch()
+    const workTime = useSelector<RootState, number>(state=>state.timerModel.options.workTime)
     const list = useSelector<RootState, Array<TaskType>>((state) => state.tasks)
     const [activeItem, setActiveItem] = useState<TaskType>()
     const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor))
@@ -95,7 +97,11 @@ export function TaskList() {
                 onDragEnd={handleDragEnd}
                 onDragCancel={handleDragCancel}
             >
-                <SortableContext items={list} strategy={rectSortingStrategy}>
+                <SortableContext
+                    items={list}
+                    strategy={verticalListSortingStrategy}
+
+                >
                     <div>
                         {list.map((item) => (
                             <Task key={item.id} text={item.title} tomato={item.tomato} id={item.id} />
@@ -110,7 +116,7 @@ export function TaskList() {
                 {formatTime(
                     list.reduce((acc, el) => {
                         return acc + el.tomato
-                    }, 0) * 25
+                    }, 0) * Math.floor(workTime / 60)
                 )}
             </div>
         </div>

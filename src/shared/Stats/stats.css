@@ -42,6 +42,6 @@
     grid-area: 3/9/4/13;
 }
 
-.statWrapper div {
-    background-color: #333333;
+.statWrapper > div {
+    background-color: var(--greyF4);
 }

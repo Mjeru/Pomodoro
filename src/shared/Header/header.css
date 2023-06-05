@@ -33,6 +33,18 @@
   font-size: 24px;
   line-height: 24px;
 }
+.logoBlock svg {
+  margin-right: 10px;
+  fill: var(--red);
+}
+.logoBlock:hover svg {
+  fill: var(--redDark);
+}
+
+
+.logoBlock:hover {
+  color: var(--redDark);
+}
 .logoBlock img {
   margin-right: 13px;
 }
@@ -45,6 +57,17 @@
   align-items: center;
   color: var(--red);
 }
+.statBlock:hover {
+  color: var(--redDark);
+}
+.statBlock:hover svg {
+  fill: var(--redDark);
+}
+.statBlock svg {
+  fill: var(--red);
+}
+
+
 .statBlock svg {
   margin-right: 9px;
 }

@@ -84,3 +84,45 @@ export const statAdd : ActionCreator<StatAdd> = (stat) => ({
   stat,
   type: STAT_ADD
 })
+
+export const SET_TIMER_MODE = 'SET_TIMER_MODE'
+export type SetTimerMode = {
+  type: typeof SET_TIMER_MODE,
+  mode: string
+}
+export const setTimerMode : ActionCreator<SetTimerMode> = (mode)=>({
+  type: SET_TIMER_MODE,
+  mode
+})
+
+export const SET_TIME = 'SET_TIME'
+export type SetTime = {
+  type: typeof SET_TIME,
+  time: number
+}
+
+export const setTime : ActionCreator<SetTime> = (time) => ({
+  time,
+  type: SET_TIME
+})
+
+
+export const SET_TIMER_PART = 'SET_TIMER_PART'
+export type SetTimerPart = {
+  type: typeof SET_TIMER_PART,
+  part: string
+}
+export const setTimerPart : ActionCreator<SetTimerPart> = (part)=>({
+  type: SET_TIMER_PART,
+  part
+})
+
+export const SET_TIMER_EVENT = 'SET_TIMER_EVENT'
+export type SetTimerEvent = {
+  type: typeof SET_TIMER_EVENT,
+  event: string
+}
+export const setTimerEvent : ActionCreator<SetTimerEvent> = (event)=>({
+  type: SET_TIMER_EVENT,
+  event
+})

@@ -1,0 +1,87 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.daysWrapper {
+    position: absolute;
+    left: 56px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    gap: 32px;
+    z-index: 2;
+}
+.day {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.dayBar {
+    width: 77px;
+    height: 100px;
+    background-color: transparent;
+    flex-grow: 2;
+    position: relative;
+}
+.datBarInner {
+    width: 100%;
+    background-color: var(--red2);
+    height: 0;
+    position: absolute;
+    bottom: 0;
+}
+.dayText {
+    height: 51px;
+    padding: 11px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: var(--grey99);
+}
+.dioFooter {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 51px;
+    background-color: var(--greyEC);
+}
+.selected {
+    background-color: var(--red);
+    color: var(--red);
+}
+.selectedText {
+    color: var(--red);
+}
+.disabled {
+    background-color: var(--greyC4);
+}
+.legendWrapper{
+    width: calc(100% - 109px);
+    height: calc(100% - 50px);
+}
+.legendWrapper div {
+    height: 20%;
+    display: flex;
+    position: relative;
+}
+.legendWrapper div > span:first-child {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--grey33);
+    opacity: 0.2;
+}
+.legedText {
+    color: var(--grey33);
+    white-space: nowrap;
+    display: flex;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 32px;
+    padding-left: 30px;
+    position: absolute;
+    left: 100%;
+    transform: translateY(-50%);
+}

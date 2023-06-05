@@ -1,9 +1,41 @@
 @import url("https://fonts.cdnfonts.com/css/sf-ui-display");
 
-:root {
+:root[data-theme="dark"] {
+  --black: #eae8e8;
+  --yellow: #b4926d;
+  --purple: #757388;
+  --blue: #637780;
+  --orange: #cc6633;
+  --red2: #EA8A79;
+  --red: #dc3e22;
+  --redDark: #B7280F;
+  --green: #a8b64f;
+  --green2: #a8b64f;
+  --green3: #899441;
+  --whiteLightness: 100%;
+  --white: #333333;
+  --greyF4: #484646;
+  --greyE4: #656565;
+  --grey33: #d9d9d9;
+  --greyF3: hsl(0, 0%, calc(var(--whiteLightness) - 95%));
+  --greyEC: hsl(0, 0%, calc(var(--whiteLightness) - 90%));
+  --greyD9: hsl(0, 0%, calc(var(--whiteLightness) - 95%));
+  --greyC4: hsl(0, 0%, calc(var(--whiteLightness) - 63%));
+  --grey99: hsl(0, 0%, calc(var(--whiteLightness) - 60%));
+  --grey66: hsl(0, 0%, calc(var(--whiteLightness) - 40%));
+  --grey-demi-dark: hsl(0, 0%, calc(var(--whiteLightness) - 60%));
+  /*filter: invert(100%) hue-rotate(180deg);*/
+}
+
+:root[data-theme="light"] {
+  --yellow: #FFDDA9;
+  --purple: #DFDCFE;
+  --blue: #C5F1FF;
   --black: #333333;
   --orange: #cc6633;
+  --red2: #EA8A79;
   --red: #dc3e22;
+  --redDark: #B7280F;
   --green: #a8b64f;
   --green2: #a8b64f;
   --green3: #899441;

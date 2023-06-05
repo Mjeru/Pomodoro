@@ -5,109 +5,134 @@ import { RootState, TaskType } from '../../store/reducer'
 import { Icon } from '../Icon'
 import { Button } from '../Button'
 import classNames from 'classnames'
-import { DEC_TOMATO, decTomato, statAdd } from '../../store/actions'
+import { DEC_TOMATO, decTomato, setTime, setTimerEvent, setTimerMode, setTimerPart, statAdd } from '../../store/actions'
 import useSound from 'use-sound'
 import boopSfx from '../../assets/beep.mp3'
 import {useWebworker} from '../../hooks/useWorker'
 
 
-const WORK = 1500
+const WORK = 2
 
 const TIMEOUT = 300
 
 
 export function Timer() {
-    const [value, setValue] = useState(null)
     const {result, run} = useWebworker()
-    const [play] = useSound(boopSfx)
     const dispatch = useDispatch()
     const task = useSelector<RootState, TaskType | undefined>((state) =>
         state.tasks.find((task) => !task.done)
     )
-    const [time, setTime] = useState(WORK)
-    const [part, setPart] = useState('work')
-    const [mode, setMode] = useState('stop')
+    const workTime = useSelector<RootState, number>(state=>state.timerModel.options.workTime)
+    const pauseTime = useSelector<RootState, number>(state=>state.timerModel.options.pauseTime)
+
+    const time = useSelector<RootState, number>(state=>state.timerModel.time)
+    const mode = useSelector<RootState, string>(state => state.timerModel.mode)
+    const part = useSelector<RootState, string>(state => state.timerModel.part)
     const addTime = () => {
-        setTime((time)=>time+60)
+        dispatch(setTime(time+60))
 
     }
-    useEffect(()=>{
-        setTime((time) => time - 1)
-        checkTimer()
-    },[result])
     const startTimer = () => {
         if (mode === 'stop' || mode === 'pause') {
-            setMode('start')
-            run('start')
-        }
-    }
-    useEffect(()=>{
-        setTime(WORK)
-        setMode('stop')
-        setPart('work')
-    },[task])
-
-    const checkTimer = () => {
-        if (time <= 0) {
-            endTimer()
+            dispatch(setTimerEvent('start'))
         }
     }
     const stopTimer = () => {
         if (mode === 'start') {
-            run('stop')
-            setTime(WORK)
-            setMode('stop')
+            // dispatch(setTime(workTime))
+            dispatch(setTimerEvent('stop'))
+
         }
     }
     const pauseTimer = () => {
-        if (mode == 'start') {
-            setMode('pause')
-            run('pause')
-        }
-    }
-    const endTimer = () => {
-        if (part == 'work') {
-            dispatch(statAdd({
-                date: new Date(),
-                pomodoro: 1,
-                pauseTime: 0,
-                workTime: 1500,
-                stops: 1,
-            }))
-            run('stop')
-            setTime(TIMEOUT)
-            setPart('timeout')
-            setMode('stop')
-            play()
-        }
-        if (part == 'timeout') {
-            run('stop')
-            setTime(WORK)
-            setPart('work')
-            setMode('stop')
-            endTomato()
-            play()
-        }
-    }
-    const endTomato = () => {
-        if (task) {
-            dispatch(decTomato(task.id))
-        }
+        dispatch(setTimerEvent('pause'))
     }
     const skipWork = () => {
         if (part == 'work') {
-            run('stop')
-            setTime(TIMEOUT)
-            setPart('timeout')
-            setMode('stop')
+            // dispatch(setTime(pauseTime))
+            dispatch(setTimerEvent('skipWork'))
+            // dispatch(setTimerPart('timeout'))
         }
     }
     const skipTimeout = () => {
-        console.log('skipWork')
-        endTomato()
+        console.log('skip')
+        dispatch(setTimerEvent('skipTimeout'))
     }
     if (!task) {
-        return <div>123</div>
+        return (
+            <div
+                className={classNames(
+                    styles.wrapper,
+                    part === 'work' ? styles.work : styles.timeout,
+                    mode === 'start'
+                        ? styles.start
+                        : mode === 'pause'
+                            ? styles.pause
+                            : styles.stop
+                )}
+            >
+                <header className={styles.header}>
+                    <div className={styles.title}>{}</div>
+                    <div className={styles.tomato}>
+                        {}
+                    </div>
+                </header>
+                <div className={styles.timeWrapper}>
+                    {formatTime(0)}
+                    <button className={styles.addButton}>
+                        <Icon iconName={'addButton'} />
+                    </button>
+                </div>
+                <div className={styles.buttonsBlock}>
+                    {mode === 'stop' ? (
+                        <Button
+
+                            text={'Старт'}
+                            type={'default'}
+                        />
+                    ) : mode === 'pause' ? (
+                        <Button
+
+                            text={'Продолжить'}
+                            type={'default'}
+                        />
+                    ) : mode === 'start' ? (
+                        <Button
+
+                            text={'Пауза'}
+                            type={'default'}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    {part === 'work' ? (
+                        mode === 'pause' ? (
+                            <Button
+
+                                text={'Сделано'}
+                                type={'activeR'}
+                            />
+                        ) : mode === 'start' ? (
+                            <Button
+
+                                text={'Стоп'}
+                                type={'activeR'}
+                            />
+                        ) :(<Button
+
+                            text={'Стоп'}
+                            type={'disabledR'}
+                        />)
+                    ) : (
+                        <Button
+
+                            text={'Пропустить'}
+                            type={'activeR'}
+                        />
+                    )}
+                </div>
+            </div>
+        )
     }
     return (
         <div
@@ -160,20 +185,24 @@ export function Timer() {
                         <Button
                             onClick={skipWork}
                             text={'Сделано'}
-                            type={'disabledR'}
+                            type={'activeR'}
                         />
-                    ) : (
+                    ) : mode === 'start' ? (
                         <Button
                             onClick={stopTimer}
                             text={'Стоп'}
-                            type={'disabledR'}
+                            type={'activeR'}
                         />
-                    )
+                    ) :(<Button
+                        onClick={stopTimer}
+                        text={'Стоп'}
+                        type={'disabledR'}
+                    />)
                 ) : (
                     <Button
                         onClick={skipTimeout}
                         text={'Пропустить'}
-                        type={'disabledR'}
+                        type={'activeR'}
                     />
                 )}
             </div>

@@ -1,0 +1,49 @@
+.tomato {
+    display: inline-flex;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--greyC4);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper:first-child {
+}
+.wrapper {
+    min-width: 370px;
+    max-width: 370px;
+    margin-top: -1px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 17px;
+    border-top: 1px solid var(--greyE4);
+    border-bottom: 1px solid var(--greyE4);
+
+}
+.menuButton {
+    height: 25px;
+}
+.textWrapper {
+    padding: 15px 0;
+    flex-grow: 2;
+    display: flex;
+    align-items: center;   cursor: grab;
+}
+.editInput {
+    font-family: "SF UI Display", serif;
+    outline: none;
+    border: none;
+    background-color: var(--greyF4);
+    padding: 5px 4px;
+    font-size: 16px;
+    line-height: 17px;
+}
+.disabled svg * {
+    fill: var(--greyC4);
+}
