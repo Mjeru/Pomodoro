@@ -18,6 +18,7 @@
     "@dnd-kit/sortable": "^7.0.2",
     "@types/ramda": "^0.28.23",
     "@types/react": "^17.0.50",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "firebase": "^9.22.0",

@@ -29,7 +29,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,/\.mp3$/],
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,/\.mp3$/,],
         loader: require.resolve("url-loader"),
         options: {
           emitFile: false,

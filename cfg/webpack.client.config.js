@@ -1,7 +1,6 @@
 const path = require("path");
 const { HotModuleReplacementPlugin, DefinePlugin } = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === "development";
 const IS_PROD = NODE_ENV === "production";
@@ -9,6 +8,7 @@ const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 const DEV_PLUGINS = [
   new CleanWebpackPlugin(),
   new HotModuleReplacementPlugin(),
+
 ];
 const COMMON_PLUGINS = [
   new DefinePlugin({ "process.env.CLIENT_ID": `'${process.env.CLIENT_ID}'` }),
