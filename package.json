@@ -8,13 +8,13 @@
     "start": "node dist/server/server.js",
     "build:dev": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider  webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider CLIENT_ID=ggLLRhNWxtdijvy6bXe65g node ./bin/dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--openssl-legacy-provider CLIENT_ID=ggLLRhNWxtdijvy6bXe65g node ./bin/dev.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.22.3",
+    "@dnd-kit/core": "^6.0.8",
     "@dnd-kit/sortable": "^7.0.2",
     "@types/ramda": "^0.28.23",
     "@types/react": "^17.0.50",
