@@ -1,5 +1,4 @@
 import React, { ReactChildren, useEffect, useRef, useState } from 'react'
-import styles from './timercontainer.css';
 import { useWebworker } from '../../hooks/useWorker'
 import useSound from 'use-sound'
 import boopSfx from '../../assets/beep.mp3'
@@ -7,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState, TaskType } from '../../store/reducer'
 import { decTomato, setTime, setTimerEvent, setTimerMode, setTimerPart, statAdd } from '../../store/actions'
 import { useIsMount } from '../../hooks/useMounted'
-import { store } from '../../store'
 
 export function TimerContainer({children}: any) {
     const theme = useSelector<RootState,string>(state=>state.theme)
@@ -15,7 +13,6 @@ export function TimerContainer({children}: any) {
         document.documentElement.dataset.theme = theme
     }, [theme])
     const isMounted = useIsMount()
-    const didMountRef = useRef(false);
     const [workedTime, setWorkedTime] = useState(0)
     const [pausedTime, setPausedTime] = useState(0)
     const [stops, setStops] = useState(0)

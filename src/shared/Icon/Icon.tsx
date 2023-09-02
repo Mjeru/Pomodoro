@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './icon.css'
 
 type IconProps = {
     size?: number
@@ -24,7 +23,6 @@ type IconProps = {
         | 'dec'
         | 'edit'
         | 'delete'
-    // перечисление имен иконок
 }
 
 export function Icon(props: IconProps) {

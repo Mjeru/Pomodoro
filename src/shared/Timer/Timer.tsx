@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './timer.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, TaskType } from '../../store/reducer'
 import { Icon } from '../Icon'
 import { Button } from '../Button'
 import classNames from 'classnames'
-import { DEC_TOMATO, decTomato, setTime, setTimerEvent, setTimerMode, setTimerPart, statAdd } from '../../store/actions'
-import useSound from 'use-sound'
-import boopSfx from '../../assets/beep.mp3'
-import {useWebworker} from '../../hooks/useWorker'
-
-
-const WORK = 2
-
-const TIMEOUT = 300
-
+import { setTime, setTimerEvent } from '../../store/actions'
 
 export function Timer() {
-    const {result, run} = useWebworker()
     const dispatch = useDispatch()
     const task = useSelector<RootState, TaskType | undefined>((state) =>
         state.tasks.find((task) => !task.done)
     )
-    const workTime = useSelector<RootState, number>(state=>state.timerModel.options.workTime)
-    const pauseTime = useSelector<RootState, number>(state=>state.timerModel.options.pauseTime)
-
     const time = useSelector<RootState, number>(state=>state.timerModel.time)
     const mode = useSelector<RootState, string>(state => state.timerModel.mode)
     const part = useSelector<RootState, string>(state => state.timerModel.part)
@@ -39,9 +26,7 @@ export function Timer() {
     }
     const stopTimer = () => {
         if (mode === 'start') {
-            // dispatch(setTime(workTime))
             dispatch(setTimerEvent('stop'))
-
         }
     }
     const pauseTimer = () => {
@@ -49,9 +34,7 @@ export function Timer() {
     }
     const skipWork = () => {
         if (part == 'work') {
-            // dispatch(setTime(pauseTime))
             dispatch(setTimerEvent('skipWork'))
-            // dispatch(setTimerPart('timeout'))
         }
     }
     const skipTimeout = () => {
